@@ -1,0 +1,20 @@
+.question-list-container {
+  width: 100%;
+  display: inline-block;
+  border: 1px solid lightgrey;
+  min-height: 230px;
+  .questionLink {
+    cursor: pointer;
+    color: blue;
+    &:hover {
+      color: green;
+    }
+  }
+  .selectedQuestion {
+    cursor: pointer;
+    color: black;
+    &:hover {
+      color: green;
+    }
+  }
+}

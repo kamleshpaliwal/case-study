@@ -1,0 +1,4 @@
+<div class="question-container">
+  <app-questions-side-bar [questionArrayLength]="questionsLength" (indexEvents)="receiveIndex($event)" class="app-question-side-bar"></app-questions-side-bar>
+  <app-question-view class="app-question-view" [questionData]=question [questionArrayLength]=questionsLength (messageEvent)="receiveMessage($event)"></app-question-view>
+</div>

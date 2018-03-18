@@ -1,0 +1,24 @@
+.question-view-component {
+  padding:	5%;
+  width: 90%;
+  float: left;
+  position: relative;
+  border: 1px solid lightgrey;
+  min-height: 200px;
+  .question-title {
+    margin-bottom: 5px;
+  }
+  .next-button {
+    position: static;
+    float: right;
+    margin-top: 20px;
+  }
+  .ck-editor {
+    float: left;
+    margin-top: 18px;
+    width: 100%;
+    .cke_contents {
+      height: 80px!important;
+    }
+  }
+}

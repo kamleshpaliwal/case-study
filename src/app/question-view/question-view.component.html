@@ -1,0 +1,11 @@
+<div class="question-view-component">
+    <div class="question-title">Question {{questionNumber +1}}</div>
+    <mat-sidenav-container class="example-container">
+        <mat-sidenav-content [innerHtml]="questionData.body"> </mat-sidenav-content>
+    </mat-sidenav-container>
+    <ck-editor class="ck-editor" [(ngModel)]="editorValue[questionNumber]" skin="moono-lisa" language="en" [fullPage]="true" #ckEditor="ckEditor"></ck-editor>
+    <button *ngIf="lastQuestion; else elseFinishBlock" class="next-button" mat-raised-button color="primary" (click)="sendIndex()">Next</button>
+    <ng-template #elseFinishBlock>
+        <button  class="next-button" mat-raised-button color="primary" (click)="finishCaseStudy()">Finish</button>
+    </ng-template>
+</div>

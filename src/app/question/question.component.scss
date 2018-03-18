@@ -1,0 +1,16 @@
+.question-container {
+  margin-top:160px;
+  float: left;
+  width: 90%;
+  padding: 0 5%;
+  display: block;
+  .app-question-side-bar{
+    float: left;
+    width: 25%;
+  }
+  .app-question-view{
+    float: left;
+    width: 70%;
+    margin-left: 5%;
+  }
+}
