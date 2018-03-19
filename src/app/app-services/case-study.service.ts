@@ -13,21 +13,13 @@ export class CaseStudyService {
         this.httpClient = httpClient;
     }
 
+    // To call  API to get questions.
     getQuestions():Observable<any> {
         return this.httpClient.get(this.getAllQuestions);
     }
 
-    //To change status of a product API.
+    //To call API to get auth token.
     getToken(authorizationData): Observable<any> {
         return this.httpClient.post(this.getTokenUrl, authorizationData);
     }
-
-    private extractResponse(res) {
-        return res;
-    }
-    
-    private handleError(error) {
-        return Observable.throw(error);
-    }
-
 }

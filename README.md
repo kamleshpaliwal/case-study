@@ -5,11 +5,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Application Requirement
 
 ```
-Clone this repo.
-Angular - 5
-Node v6.9.5
-NPM v3.10.10
-CMD: npm Install
+        Clone this repo.
+        Angular - 5
+        Node v6.9.5
+        NPM v3.10.10
+        CMD: npm Install
 ```
 
 ## Development server

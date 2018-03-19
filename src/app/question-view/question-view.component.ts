@@ -16,9 +16,8 @@ export class QuestionViewComponent implements OnInit,AfterViewInit {
     message:number = 0;
     lastQuestion:boolean = true;
     @ViewChild('ckEditor') ckEditor:CKEditorComponent;
-    questionNumber: number = 0;
-    editorValue: any = [];
-
+    questionNumber:number = 0;
+    editorValue:any = [];
 
 
     constructor(private data:DataService, private router:Router) {
@@ -26,20 +25,20 @@ export class QuestionViewComponent implements OnInit,AfterViewInit {
     }
 
     ngOnInit() {
-       this.checkLastQuestion()
+        this.checkLastQuestion()
     }
 
     ngAfterViewInit() {
         const editor = this.ckEditor.instance;
         editor.config.toolbarGroups = [
-            { name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
-            { name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] }
+            {name: 'document', groups: ['mode', 'document', 'doctools']},
+            {name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing']}
         ];
     }
 
     ngOnChanges(changes:SimpleChange) {
         this.data.currentIndex.subscribe(index => this.questionNumber = index);
-       
+
         if (this.questionNumber >= this.questionArrayLength - 1) {
             this.lastQuestion = false;
         } else {
@@ -68,8 +67,8 @@ export class QuestionViewComponent implements OnInit,AfterViewInit {
         this.router.navigate(['case-study-done']);
     }
 
-    checkLastQuestion(){
-        if(localStorage.getItem('question-index')){
+    checkLastQuestion() {
+        if (localStorage.getItem('question-index')) {
             this.questionNumber = Number(localStorage.getItem('question-index'));
             let arraylength = Number(localStorage.getItem('question-array-length'));
             this.data.changeIndex(this.questionNumber)

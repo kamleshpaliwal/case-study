@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {CaseStudyService} from '../app-services/case-study.service';
 import {AuthenticationHelper} from "../app.authentication";
 import {APP_CONSTANTS} from "../constants/application.constants";
@@ -8,7 +8,7 @@ import {APP_CONSTANTS} from "../constants/application.constants";
     templateUrl: './question.component.html',
     styleUrls: ['./question.component.scss']
 })
-export class QuestionComponent implements OnInit {
+export class QuestionComponent {
     question:any = {};
     messageIndex:number = 0;
     questionsArray:any = [];
@@ -19,14 +19,9 @@ export class QuestionComponent implements OnInit {
     constructor(private caseStudyService:CaseStudyService, private authentication:AuthenticationHelper) {
         this.getToken();
     }
-
-    ngOnInit() {
-    }
-
-    ngAfterViewInit() {
-
-    }
-
+    
+    
+    // To call function in case study seervice to get token.
     getToken() {
         let tokenCreationObject = this.loginData;
         this.caseStudyService.getToken(tokenCreationObject).subscribe(
@@ -36,7 +31,7 @@ export class QuestionComponent implements OnInit {
     }
 
     /**
-     * if login success
+     * if getTokenSuccess
      * @param result
      */
     getTokenSuccess(result) {
@@ -51,11 +46,14 @@ export class QuestionComponent implements OnInit {
     }
 
     /**
-     * if err
+     * if getTokenFail
      * @param err
      */
     getTokenFail(err) {
-        console.log('err')
+        
+        if(err){
+           alert(err)
+        }
     }
 
     getQuestionsSuccess(data) {

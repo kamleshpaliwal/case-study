@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Response,Headers} from '@angular/http';
+import {Response} from '@angular/http';
 import {Observable}     from 'rxjs/Observable';
 import {HTTP_CONFIG} from "./app.constant";
 import {HttpClient,HttpHeaders, HttpErrorResponse} from "@angular/common/http";
@@ -18,7 +18,6 @@ export class HttpClientHelper {
     createAuthorizationHeader() {
         let headers = {};
         headers['Authorization']='Bearer ' + localStorage.getItem('token');
-
         return headers;
     }
 
