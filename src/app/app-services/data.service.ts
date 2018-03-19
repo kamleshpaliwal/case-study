@@ -12,5 +12,5 @@ export class DataService {
     changeIndex(index: number) {
         this.arrayIndexSource.next(index)
     }
-
+    
 }

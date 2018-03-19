@@ -2,6 +2,7 @@ import {Component, OnInit, Input, AfterViewInit, Output, EventEmitter, SimpleCha
 import {DataService} from "../app-services/data.service";
 import {Router} from "@angular/router";
 import {CKEditorComponent} from "ngx-ckeditor/lib/src/ck-editor.component";
+import {AuthenticationHelper} from "../app.authentication";
 
 
 @Component({
@@ -13,14 +14,13 @@ export class QuestionViewComponent implements OnInit,AfterViewInit {
     @Input() questionData:any = {};
     @Input() questionArrayLength:number;
     @Output() messageEvent = new EventEmitter<number>();
-    message:number = 0;
     lastQuestion:boolean = true;
     @ViewChild('ckEditor') ckEditor:CKEditorComponent;
     questionNumber:number = 0;
     editorValue:any = [];
 
 
-    constructor(private data:DataService, private router:Router) {
+    constructor(private data:DataService, private router:Router, private authentication:AuthenticationHelper) {
 
     }
 
@@ -45,13 +45,9 @@ export class QuestionViewComponent implements OnInit,AfterViewInit {
             this.lastQuestion = true;
         }
     }
+    
 
-
-    getQuestionData() {
-
-    }
-
-
+    // function to change selected question on press of next button.
     sendIndex() {
         this.questionNumber = this.questionNumber + 1;
         if (this.questionNumber > this.questionArrayLength - 1) {
@@ -63,10 +59,13 @@ export class QuestionViewComponent implements OnInit,AfterViewInit {
         this.data.changeIndex(this.questionNumber)
     }
 
+    // function is called when user finishes the case study.
     finishCaseStudy() {
         this.router.navigate(['case-study-done']);
+        this.authentication.setFinish('case-study-done')
     }
 
+    // function to check whether index saved in local storage is last or not.
     checkLastQuestion() {
         if (localStorage.getItem('question-index')) {
             this.questionNumber = Number(localStorage.getItem('question-index'));

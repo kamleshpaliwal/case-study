@@ -38,6 +38,7 @@ export class QuestionComponent {
         if (result) {
             console.log('result', result);
             this.authentication.setToken(result);
+            // To call function in case study service to get questions.
             this.caseStudyService.getQuestions().subscribe(
                 data => this.getQuestionsSuccess(data),
                 error => this.getQuestionsFail(error)
@@ -55,7 +56,11 @@ export class QuestionComponent {
            alert(err)
         }
     }
-
+    
+    /**
+     * if getQuestionsSuccess
+     * @param result
+     */
     getQuestionsSuccess(data) {
         this.questionsArray = data.user_company_case_study.company_case_study.questions;
         if(localStorage.getItem('question-index')){
@@ -63,10 +68,18 @@ export class QuestionComponent {
         }else{
             this.displayQuestion(this.messageIndex)
         }
-
+    }
+    
+    /**
+     * if getQuestionsFail
+     * @param err
+     */
+    getQuestionsFail(err) {
+        alert(err);
 
     }
-
+    
+    // function to display question on basis od passes index.
     displayQuestion(index) {
         localStorage.setItem('question-index', index);
         let questiontoPass = this.questionsArray[index];
@@ -76,15 +89,13 @@ export class QuestionComponent {
 
     }
 
-    getQuestionsFail(err) {
-
-    }
-
-    receiveMessage($event) {
+    //  function receives question index from specific question view component.
+    receiveQuestionIndex($event) {
         this.messageIndex = $event;
         this.displayQuestion(this.messageIndex);
     }
 
+    //  function receives question index from question side bar component.
     receiveIndex($event) {
             this.questionIndex = $event;
             this.displayQuestion(this.questionIndex);

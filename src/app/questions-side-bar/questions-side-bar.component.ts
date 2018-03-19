@@ -20,6 +20,7 @@ export class QuestionsSideBarComponent {
     
   }
 
+  // function to pass index to change the selected question.
   passIndex(index){
     this.indexEvents.emit(index);
     this.data.changeIndex(index)
